@@ -13,8 +13,9 @@ app.use(cookieParser())
 
 const URI = process.env.MONGODB_URL
 mongoose.connect(URI, {
-
-    useNewUrlParser: true,
+    useCreateIndex: true,
+    useNewUrlParser: false,
+    useFindAndModify: true,
     useUnifiedTopology: true
 }, err => {
     if(err) throw err;
@@ -22,7 +23,7 @@ mongoose.connect(URI, {
 })
 
 
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
     res.json({msg: "hello"})
 })
 
