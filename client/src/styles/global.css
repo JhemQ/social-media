@@ -39,3 +39,6 @@ code {
 img {
   object-fit: cover;
 }
+
+/* -------- AUTH ---------- */
+@import url("./auth.css");
