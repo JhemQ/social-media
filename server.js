@@ -9,6 +9,15 @@ app.use(express.json())
 app.use(cors())
 app.use(cookieParser())
 
+// Socket
+const http = require('http').createServer(app)
+const io = require('socket.io')(http)
+
+io.on('connection', socket => {
+    SocketServer(socket)
+})
+
+
 // Routes
 app.use('/api', require('./routes/authRouter'))
 
