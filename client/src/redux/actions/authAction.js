@@ -1,4 +1,5 @@
 import { postDataAPI } from '../../utils/fetchData';
+import { GLOBALTYPES } from './globalTypes';
 
 export const TYPES = {
     AUTH: 'AUTH'
@@ -25,6 +26,21 @@ export const login = (data) => async (dispatch) => {
     } catch (err) {
         dispatch({ 
             type: 'NOTIFY', 
+            payload: {
+                error: err.response.data.msg
+            } 
+        })
+    }
+}
+
+export const logout = () => async (dispatch) => {
+    try {
+        localStorage.removeItem('firstLogin')
+        await postDataAPI('logout')
+        window.location.href = "/"
+    } catch (err) {
+        dispatch({ 
+            type: GLOBALTYPES.ALERT, 
             payload: {
                 error: err.response.data.msg
             } 

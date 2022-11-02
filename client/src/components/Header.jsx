@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useSelector, useDispatch}  from "react-redux"
-import { logout } from "../../redux/actions/authAction";
+import { logout } from "../redux/actions/authAction";
 
 import brandLogo from "../images/justMe.png";
 
