@@ -21,6 +21,7 @@
     "peer": "^0.6.1",
     "routes": "^2.1.0",
     "socket.io": "^4.5.3"
+
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

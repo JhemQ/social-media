@@ -26,6 +26,7 @@ io.on('connection', socket => {
 ExpressPeerServer(http, { path: '/' })
 
 
+
 // Routes
 app.use('/api', require('./routes/authRouter'))
 
