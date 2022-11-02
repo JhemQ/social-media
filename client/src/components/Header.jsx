@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useSelector, useDispatch}  from "react-redux"
+import { logout } from "../../redux/actions/authAction";
 
 import brandLogo from "../images/justMe.png";
 
@@ -11,6 +12,9 @@ const Header = () => {
     { label: "Discover", icon: "public", path: "/discover" },
     { label: "Notify", icon: "notifications", path: "/notify" },
   ];
+  const { auth, theme, notify } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { pathname } = useLocation();
  
   const pathName = useLocation()
 const isActive = (pn) =>  { if(pn===pathName) return 'active' }
@@ -42,7 +46,13 @@ const isActive = (pn) =>  { if(pn===pathName) return 'active' }
                 <label htmlFor="theme" className="dropdown-item">Dark Mode</label>
                
                 <div className="dropdown-divider"></div>
-                <li> <Link className="dropdown-item" to="/" onClick={(null)}> Log-out </Link> </li>
+                <li>  <Link
+              className="dropdown-item"
+              to="/"
+              onClick={() => dispatch(logout())}
+            >
+               {theme ? <span ><ion-icon  name="exit-outline"></ion-icon> Sign-out</span>  : <span><ion-icon name="exit-outline"></ion-icon> Sign-out</span>}
+            </Link> </li>
               </ul>
             </li>
           </ul>
