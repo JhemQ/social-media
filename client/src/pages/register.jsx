@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate, Link } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { register } from '../redux/actions/authAction'
 /* import logo from '../images/logo_name.png'; */
 
 const Register = () => {
     const { auth, alert } = useSelector(state => state)
     const dispatch = useDispatch()
-    const navigate = useNavigate()
+    const history = useHistory()
 
     const initialState = { 
         fullname: '', username: '', email: '', password: '', cf_password: '', gender: 'male'
@@ -19,8 +19,10 @@ const Register = () => {
     const [typeCfPass, setTypeCfPass] = useState(false)
 
     useEffect(() => {
-        if(auth.token) navigate("/")
-    }, [auth.token, navigate])
+        if(auth.token){
+            history.push("/")
+        } 
+    }, [auth.token, history])
 
     
     const handleChangeInput = e => {
